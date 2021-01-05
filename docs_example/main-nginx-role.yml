@@ -1,0 +1,13 @@
+---
+- hosts: "{{hostname}}"
+  gather_facts: yes
+  become: yes
+  pre_tasks:
+  - name: 'install python'
+    raw: sudo apt-get update && sudo apt-get -y install python3
+    tags: ['always']
+  roles:
+  - role: ansible-role-nginx
+    vars:
+      ansible_python_interpreter: /usr/bin/python3
+      nginx_status_enabled: true
