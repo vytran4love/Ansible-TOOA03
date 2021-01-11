@@ -27,19 +27,12 @@ $ ansible-playbook main-nginx-role.yml -i hosts -e hostname=all
 
 $ ansible-playbook main-nginx-role.yml -i hosts -e hostname=all -t install
 
-$ ansible -i hosts all -m shell -a "cat /etc/nginx/nginx.conf"
-
 $ ansible-playbook main-nginx-role.yml -i hosts -e hostname=all -t config
 
-$ ansible -i hosts all -m shell -a "cat /etc/nginx/nginx.conf"
-
 $ ansible-playbook main-nginx-role.yml -i hosts -e hostname=all -e force_use_external_vhost=true -t config
-
-$ ansible -i hosts all -m shell -a "cat /etc/nginx/conf.d/web01.conf"
 
 License
 -------
 
 Author Information
 ------------------
-
