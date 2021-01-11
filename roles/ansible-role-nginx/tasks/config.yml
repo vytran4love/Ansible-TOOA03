@@ -1,0 +1,25 @@
+---
+- name: Remove sites-avaiable and sites-enabled
+  file: 
+    path: "{{ item }}"
+    state: absent
+  with_items:
+    - /etc/nginx/sites-avaiable
+    - /etc/nginx/sites-enabled
+  ignore_errors: true
+- name: Copy file
+  copy:
+    src: abc.txt
+    dest: /var/www/
+- name: Override file nginx.conf
+  template:
+    src: "nginx.conf.j2"
+    dest: "/etc/nginx/nginx.conf"
+- name: configure external vhosts
+  copy:
+    src: web01.conf
+    dest: "/etc/nginx/conf.d"
+  when: force_use_external_vhost
+  notify:
+    - validate nginx
+    - restart nginx
