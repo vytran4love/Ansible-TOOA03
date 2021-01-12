@@ -1,0 +1,36 @@
+- hosts: "{{hostname}}"
+  gather_facts: yes
+  become: yes
+  pre_tasks:
+  - name: Update system
+    raw: apt-get update && apt-get install -y python3
+    tags: ['always']
+  tasks:
+  - name: Check connection
+    ping:
+  - name: Update package
+    apt:
+      name: "*"
+      state: latest
+      update_cache: true
+      force_apt_get: true
+  - name: Install nginx
+    apt:
+      name: nginx
+      state: present
+    notify: start nginx
+  # - name: Update config
+  #   notify: restart nginx
+  # - name: Change vhost
+  #   notify: restart nginx
+  handlers:
+  - name: start nginx
+    systemd:
+      name: nginx
+      state: started
+      enabled: true
+  - name: restart nginx
+    systemd:
+      name: nginx
+      state: restarted
+      enabled: true

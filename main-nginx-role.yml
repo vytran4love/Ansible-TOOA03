@@ -1,0 +1,9 @@
+---
+- hosts: "{{hostname}}"
+  gather_facts: yes
+  become: yes
+  roles:
+  - role: ansible-role-nginx
+    vars:
+      ansible_python_interpreter: /usr/bin/python3
+      nginx_status_enabled: true
