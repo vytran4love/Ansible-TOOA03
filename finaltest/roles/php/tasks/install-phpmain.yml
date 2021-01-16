@@ -1,0 +1,9 @@
+---
+- name: Install PHP Depedency with PHP-FPM
+  apt: 
+    name: ['php7.2-fpm', 'php-common', 'php-mbstring', 'php-xmlrpc', 'php-soap', 'php-gd', 'php-xml', 'php-intl', 'php-mysql', 'php-cli', 'php-ldap', 'php-zip', 'php-curl']
+    update_cache: yes
+    state: present
+  become_method: sudo
+  become: yes
+

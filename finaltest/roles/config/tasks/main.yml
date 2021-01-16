@@ -1,0 +1,48 @@
+---
+- name: copying example file app
+  copy:
+    src: index.php
+    dest: /var/www/html/index.php
+  when: hostname = 'info.example.domain'
+  become: true
+  become_user: root
+
+- name: copy helloworld
+  copy:
+    src: helloworld.txt
+    dest: /var/www/html/
+  when: hostname = 'hello.example.domain'  
+
+- name: copying app conf                       
+  copy:
+    src: app.conf
+    dest: /etc/apache2/sites-available/app.conf
+  become: true
+  become_user: root
+
+- name: check file exists.
+  stat:
+    path: /etc/apache2/sites-enabled/000-default.conf
+  register: default
+
+- name: Deleting Apache Config Default
+  when: default.stat.path == "/etc/apache2/sites-enabled/000-default.conf"
+  shell: rm -rf /etc/apache2/sites-enabled/000-default.conf
+  become: true
+  become_user: root
+
+- name: Deleting Apache File Default
+  when: default.stat.exists == True
+  file:
+    path: /var/www/html/index.html 
+    state: absent
+  become: true
+  become_user: root
+
+- name: Create symbolic link
+  file:
+    src: "/etc/apache2/sites-available/app.conf"
+    dest: "/etc/apache2/sites-enabled/app.conf"
+    state: link
+  notify: restart apache2
+
