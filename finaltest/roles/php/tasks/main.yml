@@ -1,0 +1,10 @@
+---
+- include: install-phpmain.yml
+
+- name: enable php-fpm
+  shell: a2enmod actions proxy_fcgi
+  notify:
+   - restart apache2
+  become: true
+  become_user: root
+
