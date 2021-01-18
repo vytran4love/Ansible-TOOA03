@@ -7,8 +7,14 @@ Requirements
 ------------
 
 When access default web server is php-info, 1 domain is php-info, 1 domain is hello-world
-Client can resolve domain by edit /etc/hosts
 
+Client can resolve domain by edit /etc/hosts on Windows or Unix
+```
+192.168.1.101	php-info.mtuan.com
+192.168.1.101	hello-world.mtuan.com
+192.168.1.102	php-info.tuantest.com
+192.168.1.102	hello-world.tuantest.com
+```
 Role Variables
 --------------
 
