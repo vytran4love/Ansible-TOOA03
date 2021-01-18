@@ -1,0 +1,19 @@
+---
+- name: Install software-properties-common
+  apt:
+    name: software-properties-common
+    state: present
+- name: Add repository for PHP
+  apt_repository: 
+    repo: 'ppa:ondrej/php'
+- name: Update all packages to their latest version
+  apt:
+    name: "*"
+    state: latest
+    update_cache: true
+    force_apt_get: true
+- name: Install php7.1
+  apt:
+    name: php7.1-fpm
+    state: present
+  notify: check version php

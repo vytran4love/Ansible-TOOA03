@@ -1,0 +1,6 @@
+---
+- hosts: "{{hostname}}"
+  gather_facts: yes
+  become: yes
+  roles:
+  - role: main-nginx-php7.1-role

@@ -1,0 +1,3 @@
+---
+# defaults file for main-nginx-php7.1-role
+domain: "mtuan.com"

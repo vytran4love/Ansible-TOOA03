@@ -1,0 +1,14 @@
+server {
+    listen 80;
+    listen [::]:80;
+    root /var/www/html/hello-world/;
+    index  index.php index.html index.htm;
+    server_name  hello-world.{{ domain }};
+    location / {
+        try_files $uri $uri/ =404;       
+    }
+        location ~ \.php$ {
+               include snippets/fastcgi-php.conf;
+               fastcgi_pass unix:/var/run/php/php7.1-fpm.sock;
+        }
+}

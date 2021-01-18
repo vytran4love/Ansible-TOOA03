@@ -1,0 +1,20 @@
+---
+# handlers file for main-nginx-php7.1-role
+- name: start nginx
+  systemd:
+    name: nginx
+    state: started
+    enabled: true
+- name: validate nginx
+  command: nginx -t
+  changed_when: false
+- name: reload nginx
+  systemd:
+    name: nginx
+    state: reloaded
+- name: restart nginx
+  systemd:
+    name: nginx
+    state: restarted
+- name: check version php
+  command: php -v

@@ -1,0 +1,11 @@
+---
+# tasks file for main-nginx-php7.1-role
+- include: install-nginx.yml
+  tags:
+    - install-nginx
+- include: install-php7.1.yml
+  tags:
+    - install-php7.1
+- include: config-nginx.yml
+  tags:
+    - config-nginx
