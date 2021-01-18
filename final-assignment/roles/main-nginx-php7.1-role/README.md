@@ -37,7 +37,7 @@ $ ansible-inventory -i hosts --graph
   |  |--192.168.1.101
   |  |--192.168.1.102
 ```
-Install web-server with default domain
+Install web-server with default domain is mtuan.com
 ```
 $ ansible-playbook main-nginx-php7.1-role.yml -i hosts -e hostname=web-server[0]
 ```
