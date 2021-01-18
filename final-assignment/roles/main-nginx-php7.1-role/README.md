@@ -51,6 +51,11 @@ $ ansible-playbook main-nginx-php7.1-role.yml -i hosts -e hostname=web-server[0]
 $ ansible-playbook main-nginx-php7.1-role.yml -i hosts -e hostname=web-server[0] -t install-php7.1
 $ ansible-playbook main-nginx-php7.1-role.yml -i hosts -e hostname=web-server[0] -t config-nginx
 ```
+Remove nginx, php7.1 and source web by ansible ad-hoc
+```
+$ ansible -b -i hosts all -m shell -a "apt purge nginx nginx-common -y && apt purge php7.1-fpm -y && rm -rf /var/www/html/*"
+```
+
 License
 -------
 
