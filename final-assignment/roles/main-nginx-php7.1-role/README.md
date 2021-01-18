@@ -27,19 +27,24 @@ No dependencies
 
 Example Playbook
 ----------------
-
-$ ansible-inventory -i hosts --graph
+Check inventory
 ```
+$ ansible-inventory -i hosts --graph
+
 @all:
   |--@ungrouped:
   |--@web-server:
   |  |--192.168.1.101
   |  |--192.168.1.102
 ```
+Install web-server with default domain
+```
 $ ansible-playbook main-nginx-php7.1-role.yml -i hosts -e hostname=web-server[0]
-
+```
+Install web-server with domain
+```
 $ ansible-playbook main-nginx-php7.1-role.yml -i hosts -e hostname=web-server[1] -e domain=tuantest.com
-
+```
 Step by step install 
 ```
 $ ansible-playbook main-nginx-php7.1-role.yml -i hosts -e hostname=web-server[0] -t install-nginx
