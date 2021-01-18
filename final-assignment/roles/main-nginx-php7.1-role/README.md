@@ -41,7 +41,7 @@ Install web-server with default domain is mtuan.com
 ```
 $ ansible-playbook main-nginx-php7.1-role.yml -i hosts -e hostname=web-server[0]
 ```
-Install web-server with domain
+Install web-server with domain tuantest.com
 ```
 $ ansible-playbook main-nginx-php7.1-role.yml -i hosts -e hostname=web-server[1] -e domain=tuantest.com
 ```
